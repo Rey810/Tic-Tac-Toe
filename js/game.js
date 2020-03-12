@@ -3,18 +3,16 @@
 //tuck everyhting inside a module or factory:
 //1 thing, use a module (displayController, displayController)
 //2 or more things: use a factory
-const gameContainer     =   document.querySelector('.game-container');
-const positions         =   document.querySelectorAll('.piece-position');
-const gameInfo          =   document.querySelector('.current-game-info');
-const playerInfo        =   document.querySelector('.player-info');
-const reset             =   document.querySelector('.reset');
-const player1Form       =   document.querySelector('.player1-form');
-const player2Form       =   document.querySelector('.player2-form');
-const player1Name       =   document.querySelector('.player1-name').value;
-const nextButton        =   document.querySelector('.add-player');
-const player2Name       =   document.querySelector('.player2-name').value;
-const startGameButton   =   document.querySelector('.start-game');
-
+const gameContainer         =   document.querySelector('.game-container');
+const positions             =   document.querySelectorAll('.piece-position');
+const gameInfo              =   document.querySelector('.current-game-info');
+const playerInfo            =   document.querySelector('.player-info');
+const reset                 =   document.querySelector('.reset');
+const playerInfoContainer   =   document.querySelector('.player-info-container');
+const player1Form           =   document.querySelector('.player1-form');
+const player2Form           =   document.querySelector('.player2-form');
+const nextButton            =   document.querySelector('.add-player');
+const startGameButton       =   document.querySelector('.start-game');
 
 //player creation goes here with form listeners to create named players
 //player
@@ -36,17 +34,20 @@ const displayController = (() => {
     const gameBoardDisplay = () => {
         // sets the innerHTML for each position
         [...positions].forEach(position => {
+            position.innerHTML = '';
             position.innerHTML = gameArray[position.dataset.index];
         });
     };
 
     const turnOnPlayerInfoDisplay = () => {
         gameContainer.style.display = 'none';
+        playerInfoContainer.style.display = 'flex';
         player1Form.style.display = 'block';
         nextButton.style.display = 'block';
     };
 
     const turnOnGameDisplay = () => {
+        playerInfoContainer.style.display = 'none';
         player2Form.style.display = 'none';
         startGameButton.style.display = 'none';
         gameContainer.style.display = 'grid';
@@ -64,17 +65,21 @@ const displayController = (() => {
 
 //gameLogic
 const gameLogic = (() => {
+
     console.log('inside gameLogic');
     let playerArray = [];
     let currentPlayer = '';
     //current game board
     gameArray = displayController.gameArray;
+    console.log(`game logic game array ${gameArray}`);
     let currentIcon = 'X';
     
-    const gameStart = (player1Name, player2Name) => {
+    const gameStart = () => {
+        const player1Name = document.querySelector('.player1-name').value;
+        const player2Name = document.querySelector('.player2-name').value;
         console.log("Inside gameLogic.gameStart");
-        const player1 = playerFactory(`${player1Name}`);
-        const player2 = playerFactory(`${player2Name}`);
+        let player1 = playerFactory(`${player1Name}`);
+        let player2 = playerFactory(`${player2Name}`);
         console.log(player1);
         console.log(player2);
         playerArray.push(player1, player2);
@@ -140,24 +145,32 @@ const gameLogic = (() => {
             [0, 4, 8], [2, 4, 6]
         ];
 
-        let answer = [];
-        let playerArray = [];
-        playerArray = currentPlayer.completedMoveIndices;
-        console.log(playerArray);
+        //this will be the resulting array after checking if the player array includes a winning array
+        let playerArray = currentPlayer.completedMoveIndices;
+        
 
-        answer = winningArray.filter(filterFunction);
-
-        function filterFunction(array){
+        const iFilterForAWinner = array => {
 	    //for each number in array, check if it's included in the playerArray
          if ((playerArray.includes(array[0]))   &&    
             (playerArray.includes(array[1]))    && 
             playerArray.includes(array[2])){
                 return true;
             }
+        };
+
+        //this is then checked for length. 
+        //If it has a length then the player has a winning set of numberrs.
+        let thereIsAWinnerArray = winningArray.filter(iFilterForAWinner);
+
+        const gameOverStatus = innerHTML => {
+            gameInfo.innerHTML = innerHTML;
+            reset.style.display = 'block';
+            reset.addEventListener('click', resetGame);
         }
 
-        if (answer.length >= 1){
-            console.log('you have a winner!')
+        if (thereIsAWinnerArray.length >= 1){
+            gameOverStatus(`${currentPlayer.name} is the winner!`)
+            console.log('There is a winner!');
         } else {
             console.log('no winner it seems...');
         }
@@ -166,9 +179,7 @@ const gameLogic = (() => {
         // currentPlayer.completedMoveIndices;
         // if gameArray is full, return a draw
         if (gameArray.every(position => position != '')) {
-            gameInfo.innerHTML = "It's a draw!";
-            reset.style.display = 'block';
-            reset.addEventListener('click', resetGame);
+            gameOverStatus("It's a draw!");
         }
     };
 
@@ -181,20 +192,19 @@ const gameLogic = (() => {
     });
 
     const resetGame = () => {
-        displayController.turnOnPlayerInfoDisplay();
-        gameArray = ['', '', '', '', '', '', '', '', ''];
-        playerArray = [];
-        currentPlayer = '';
-        currentIcon = 'X';
+        // displayController.turnOnPlayerInfoDisplay();
+        // displayController.gameArray = ['', '', '', '', '', '', '', '', ''];
+        // displayController.gameBoardDisplay();
+        // playerArray = [];
+        // currentPlayer = '';
+        // currentIcon = 'X';
+        location.reload();
+        return true;
     };
 
     return { gameStart, gameArray, playerArray, currentPlayer };
 })();
 
-
+startGameButton.addEventListener('click', gameLogic.gameStart);
 nextButton.addEventListener('click', displayController.turnOnPlayer2Form);
-startGameButton.addEventListener(
-    'click',
-    gameLogic.gameStart.bind(null, player1Name, player2Name)
-);
 startGameButton.addEventListener('click', displayController.turnOnGameDisplay);
