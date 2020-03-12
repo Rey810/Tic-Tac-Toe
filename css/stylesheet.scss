@@ -1,0 +1,18 @@
+.game-container {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.game-board {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+}
+
+.piece-position {
+    //default em value = default font-size (16px)
+    padding: 2em;
+}

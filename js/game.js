@@ -4,6 +4,8 @@
 //1 thing, use a module (gameBoard, displayController)
 //2 or more things: use a factory
 const positions = document.querySelectorAll('.piece-position');
+const gameInfo = document.querySelector('.current-game-info');
+const playerInfo = document.querySelector('.player-info');
 
 //gameBoard
 //a module: wrap the factory in an IIFE
@@ -28,38 +30,42 @@ const gameLogic = (() => {
     //current game board
     let gameArray = gameBoard.gameArray;
 
-    let currentPlayer = 'X';
+    // current player's icon
+    let currentIcon = 'X';
 
     const switchPlayer = () => {
-        currentPlayer == 'X' ? (currentPlayer = 'O') : (currentPlayer = 'X');
+        if (currentIcon == 'X') {
+            currentIcon = 'O';
+            playerInfo.innerHTML = 'Player 2';
+        } else {
+            currentIcon = 'X';
+            playerInfo.innerHTML = 'Player 1';
+        }
     };
 
-    const makeMove = position => {
+    const makeMove = (positionIndex, position) => {
         //if the position is empty, put the move in place
-        if (gameArray[position] == '') {
-            console.log(`you clicked index ${position} on the array`);
-            gameArray[position] = currentPlayer;
+        if (gameArray[positionIndex] == '') {
+            console.log(`you clicked index ${positionIndex} on the array`);
+            console.log(positionIndex);
+            console.log(position);
+            gameArray[positionIndex] = currentIcon;
+            // set clicked position innerHTML to currentIcon
+            position.innerHTML = currentIcon;
             switchPlayer();
         }
-        gameBoard.display();
     };
 
     //add listeners at each position
     const positionListeners = [...positions].forEach(position => {
         position.addEventListener(
             'click',
-            makeMove.bind(null, position.dataset.index)
+            makeMove.bind(null, position.dataset.index, position)
         );
     });
 
     return {};
 })();
-
-function gameLogic2() {
-    function printFunction() {
-        console.log('this function is accessible from anywhere');
-    }
-}
 
 //player
 //a factory
