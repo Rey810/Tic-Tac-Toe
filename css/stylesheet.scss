@@ -15,4 +15,10 @@
 .piece-position {
     //default em value = default font-size (16px)
     padding: 2em;
+    border: solid black 1px;
+    cursor: crosshair;
+}
+
+.current-game-info {
+    cursor: default;
 }

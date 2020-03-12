@@ -7,13 +7,33 @@
         <link rel="stylesheet" href="../css/stylesheet.css" />
     </head>
     <body>
-        <div class="game-container">
+        <form class="player1-form">
+            <input
+                class="player1-name"
+                type="text"
+                placeholder="Your Name (P1)"
+            />
+        </form>
+        <button class="add-player">Add me</button>
+        <form class="player2-form" style="display: none;">
+            <input
+                class="player2-name"
+                type="text"
+                placeholder="Your Name (P2)"
+            />
+        </form>
+        <button class="start-game" style="display: none;">
+            Add me and Start Game!
+        </button>
+
+        <div class="game-container" style="display: none;">
             <div class="current-game-info">
                 It's
                 <span class="player-info">Player 1</span>
                 's turn.
             </div>
-            <div class="game-board">
+            <button class="reset" style="display: none;">Play again</button>
+            <section class="game-board">
                 <!--add a separate div (9 in total) that are styled in a grid style-->
                 <div class="piece-position" data-index="0">...</div>
                 <div class="piece-position" data-index="1">...</div>
@@ -24,7 +44,7 @@
                 <div class="piece-position" data-index="6">...</div>
                 <div class="piece-position" data-index="7">...</div>
                 <div class="piece-position" data-index="8">...</div>
-            </div>
+            </section>
         </div>
 
         <script src="../js/game.js"></script>
