@@ -1,3 +1,84 @@
+html {
+    background: black;
+}
+
+h1 {
+    color: white;
+}
+
+form {
+    input {
+        padding: 0.8em 0.6em;
+        border-radius: 0.4em;
+        font-size: 1.3em;
+        width: 8em;
+        background-color: #bd7cea;
+        border-color: #bd7cea;
+        color: #000000ad;
+    }
+}
+
+.player1-form {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    animation: slideIn 0.3s ease-in;
+    align-items: center;
+}
+
+.player2-form {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    align-items: center;
+    top: -12vw;
+}
+
+@keyframes slideOut {
+    0% {
+        right: 0vw;
+    }
+
+    50% {
+        right: 50vw;
+    }
+
+    100% {
+        right: 100vw;
+    }
+}
+
+@keyframes slideIn {
+    0% {
+        left: 70vw;
+    }
+
+    50% {
+        left: 35vw;
+    }
+
+    100% {
+        left: 0vw;
+    }
+}
+
+button {
+    position: relative;
+    padding: 0.4em 0.5em;
+    border-radius: 0.4em;
+    font-size: 1em;
+    margin-top: 1em;
+    font-style: revert;
+    font-weight: bold;
+    color: #521f75;
+    border-color: #0000;
+    width: 12em;
+    &:hover {
+        background: #521f75;
+        color: white;
+    }
+}
+
 .player-info-container {
     height: 100vh;
     display: flex;
@@ -7,11 +88,16 @@
 }
 
 .game-container {
+    position: relative;
+    align-content: center;
     height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
+    .reset {
+        margin: 1em 1em;
+    }
 }
 
 .game-board {
@@ -22,11 +108,25 @@
 
 .piece-position {
     //default em value = default font-size (16px)
-    padding: 2em;
-    border: solid black 1px;
+    padding: 0.2em 0.4em;
+    margin: 1px;
     cursor: crosshair;
+    border: solid #8b00ff 6px;
+    color: black;
+    font-size: 4em;
+    &:hover {
+        border-color: #000;
+        background-color: #8b00ff;
+        color: #8b00ff;
+    }
 }
 
 .current-game-info {
     cursor: default;
+    padding: 1em;
+    border-radius: 0.6em;
+    display: block;
+    text-align: center;
+    font-size: x-large;
+    color: #8b00ff;
 }

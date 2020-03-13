@@ -1,53 +1,190 @@
+html {
+    background: black;
+}
+
+h1 {
+    color: white;
+}
+
+form input {
+    padding: 0.8em 0.6em;
+    border-radius: 0.4em;
+    font-size: 1.3em;
+    width: 8em;
+    background-color: #bd7cea;
+    border-color: #bd7cea;
+    color: #000000ad;
+}
+
+.player1-form {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    position: relative;
+    -webkit-animation: slideIn 0.3s ease-in;
+    animation: slideIn 0.3s ease-in;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+}
+
+.player2-form {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    position: relative;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    top: -12vw;
+}
+
+@-webkit-keyframes slideOut {
+    0% {
+        right: 0vw;
+    }
+    50% {
+        right: 50vw;
+    }
+    100% {
+        right: 100vw;
+    }
+}
+
+@keyframes slideOut {
+    0% {
+        right: 0vw;
+    }
+    50% {
+        right: 50vw;
+    }
+    100% {
+        right: 100vw;
+    }
+}
+
+@-webkit-keyframes slideIn {
+    0% {
+        left: 70vw;
+    }
+    50% {
+        left: 35vw;
+    }
+    100% {
+        left: 0vw;
+    }
+}
+
+@keyframes slideIn {
+    0% {
+        left: 70vw;
+    }
+    50% {
+        left: 35vw;
+    }
+    100% {
+        left: 0vw;
+    }
+}
+
+button {
+    position: relative;
+    padding: 0.4em 0.5em;
+    border-radius: 0.4em;
+    font-size: 1em;
+    margin-top: 1em;
+    font-style: revert;
+    font-weight: bold;
+    color: #521f75;
+    border-color: #0000;
+    width: 12em;
+}
+
+button:hover {
+    background: #521f75;
+    color: white;
+}
+
 .player-info-container {
-  height: 100vh;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+    height: 100vh;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
 }
 
 .game-container {
-  height: 100vh;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+    position: relative;
+    -ms-flex-line-pack: center;
+    align-content: center;
+    height: 100vh;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+}
+
+.game-container .reset {
+    margin: 1em 1em;
 }
 
 .game-board {
-  display: -ms-grid;
-  display: grid;
-  -ms-grid-columns: (1fr)[3];
-      grid-template-columns: repeat(3, 1fr);
-  -ms-grid-rows: (1fr)[3];
-      grid-template-rows: repeat(3, 1fr);
+    display: -ms-grid;
+    display: grid;
+    -ms-grid-columns: (1fr) [3];
+    grid-template-columns: repeat(3, 1fr);
+    -ms-grid-rows: (1fr) [3];
+    grid-template-rows: repeat(3, 1fr);
 }
 
 .piece-position {
-  padding: 2em;
-  border: solid black 1px;
-  cursor: crosshair;
+    padding: 0.2em 0.4em;
+    margin: 1px;
+    cursor: crosshair;
+    border: solid #8b00ff 6px;
+    color: black;
+    font-size: 4em;
+}
+
+.piece-position:hover {
+    border-color: #000;
+    background-color: #8b00ff;
+    color: #8b00ff;
 }
 
 .current-game-info {
-  cursor: default;
+    cursor: default;
+    padding: 1em;
+    border-radius: 0.6em;
+    display: block;
+    text-align: center;
+    font-size: x-large;
+    color: #8b00ff;
 }
 /*# sourceMappingURL=stylesheet.css.map */
