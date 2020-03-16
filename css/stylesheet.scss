@@ -6,6 +6,15 @@ h1 {
     color: white;
 }
 
+//particles container
+.particles-container {
+    width: 95vw;
+    height: 95vh;
+    position: absolute;
+    top: 0;
+    z-index: -1;
+}
+
 .game-title {
     font-size: 4em;
     text-align: center;
