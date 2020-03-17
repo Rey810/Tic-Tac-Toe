@@ -93,7 +93,8 @@ button {
     color: #521f75;
     border-color: #0000;
     width: 12em;
-    &:hover {
+    &:hover,
+    &:focus {
         background: #521f75;
         color: white;
     }
@@ -135,7 +136,8 @@ button {
     border: solid #8b00ff 6px;
     color: black;
     font-size: 4em;
-    &:hover {
+    &:hover,
+    &:focus {
         border-color: #000;
         background-color: #8b00ff;
         color: #8b00ff;

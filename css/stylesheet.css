@@ -125,7 +125,8 @@ button {
     width: 12em;
 }
 
-button:hover {
+button:hover,
+button:focus {
     background: #521f75;
     color: white;
 }
@@ -190,7 +191,8 @@ button:hover {
     font-size: 4em;
 }
 
-.piece-position:hover {
+.piece-position:hover,
+.piece-position:focus {
     border-color: #000;
     background-color: #8b00ff;
     color: #8b00ff;
