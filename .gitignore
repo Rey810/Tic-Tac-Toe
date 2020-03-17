@@ -1,2 +1,4 @@
 /node_modules
-*.json
+settings.json
+package.json
+package-lock.json

@@ -195,6 +195,6 @@ nextButton.addEventListener('click', displayController.turnOnPlayer2Form);
 startGameButton.addEventListener('click', displayController.turnOnGameDisplay);
 startGameButton.addEventListener('click', gameLogic.gameStart);
 
-particlesJS.load('particles-js', '../particles.json', function() {
+particlesJS.load('particles-js', 'particles.json', function() {
     console.log('particles.js loaded - callback');
 });
