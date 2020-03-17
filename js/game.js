@@ -191,9 +191,9 @@ const gameLogic = (() => {
     return { gameStart, gameArray, playerArray, currentPlayer, resetGame };
 })();
 
-startGameButton.addEventListener('click', gameLogic.gameStart);
 nextButton.addEventListener('click', displayController.turnOnPlayer2Form);
 startGameButton.addEventListener('click', displayController.turnOnGameDisplay);
+startGameButton.addEventListener('click', gameLogic.gameStart);
 
 particlesJS.load('particles-js', '../particles.json', function() {
     console.log('particles.js loaded - callback');

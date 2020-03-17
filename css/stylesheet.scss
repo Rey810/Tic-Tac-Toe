@@ -1,9 +1,17 @@
 html {
     background: black;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+    margin: 0;
+    overflow-y: hidden;
+    overflow-x: hidden;
 }
 
 h1 {
     color: white;
+    font-size: 1.1em;
 }
 
 //particles container
@@ -44,18 +52,14 @@ form {
 .player2-form {
     display: flex;
     flex-direction: column;
-    position: relative;
+    position: absolute;
+    width: 100%;
     align-items: center;
-    top: -17vw;
 }
 
 @keyframes slideOut {
     0% {
         right: 0vw;
-    }
-
-    50% {
-        right: 50vw;
     }
 
     100% {
@@ -65,15 +69,15 @@ form {
 
 @keyframes slideIn {
     0% {
-        left: 70vw;
+        right: -100vw;
     }
 
     50% {
-        left: 35vw;
+        right: -50vw;
     }
 
     100% {
-        left: 0vw;
+        right: 0vw;
     }
 }
 
@@ -141,9 +145,11 @@ button {
 .current-game-info {
     cursor: default;
     padding: 1em;
-    border-radius: 0.6em;
     display: block;
     text-align: center;
     font-size: x-large;
-    color: #8b00ff;
+    color: #b161f4;
+    background: #000000c2;
+    padding: 0.4em;
+    border-radius: 0.5em;
 }
